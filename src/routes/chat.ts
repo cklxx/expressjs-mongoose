@@ -15,7 +15,7 @@ routes.get("/", async (req, res) => {
     const resc = await axios('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers,
-      data: JSON.stringify({ "model": "gpt-3.5-turbo", "messages": [{"role": "user", "content": "What is the OpenAI mission?"}] }),
+      data: JSON.stringify({ "model": "gpt-3.5-turbo", "messages": [{"role": "user", "content":req.query.message || 'hi' }] }),
     })
     const response =
       await resc.data
